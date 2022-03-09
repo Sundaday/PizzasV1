@@ -12,15 +12,17 @@ namespace PizzasV1
         string name;
         float price;
         bool vegan;
+        List<string> ingredients;
         #endregion
 
         #region Constructor field
         public Pizza() { }
-        public Pizza(string name, float price, bool vegan)
+        public Pizza(string name, float price, bool vegan, List<string> ingredients)
         {
             this.name = name;
             this.price = price;
             this.vegan = vegan;
+            this.ingredients = ingredients;
         }
         #endregion
 
@@ -32,11 +34,16 @@ namespace PizzasV1
             string nameDisplay = NameDisplay(name);
 
             Console.WriteLine(nameDisplay + badgeVege + " - " + price + "€");
+            Console.WriteLine(string.Join(", ", ingredients));
+            Console.WriteLine();
         }
         #endregion
 
         private static string NameDisplay(string s)
         {
+            if (string.IsNullOrEmpty(s))
+                return s;
+
             string charMin = s.ToLower();
             string charMaj = s.ToUpper();
 
