@@ -10,9 +10,9 @@ namespace PizzasV1
     {
         #region Variable field
         string name;
-        float price;
-        bool vegan;
-        List<string> ingredients;
+        public float price { get; private set; }
+        public bool vegan { get; private set; }
+        public List<string> ingredients { get; private set; }
         #endregion
 
         #region Constructor field
@@ -27,19 +27,35 @@ namespace PizzasV1
         #endregion
 
         #region Function field
-        public void Afficher()
+        public void Display()
         {
+            //if smart syntax
             string badgeVege = vegan ? " (V)" : "";
            
-            string nameDisplay = NameDisplay(name);
+            string nameDisplay = VarDisplay(name);
+
+            //var ingredientDisplay = new List<string>();
+            //foreach(string ingredient in ingredients)
+            //{
+            //    ingredientDisplay.Add(VarDisplay(ingredient));
+            //}
+
+            var ingredientDisplay = ingredients.Select(i => VarDisplay(i)).ToList();
 
             Console.WriteLine(nameDisplay + badgeVege + " - " + price + "€");
-            Console.WriteLine(string.Join(", ", ingredients));
+            Console.WriteLine(string.Join(", ", ingredientDisplay));
             Console.WriteLine();
+        }
+
+        //Search ingredients by occurences
+        public bool ReturnIngredient(string ingredient)
+        {
+            return ingredients.Where(i => i.ToLower().Contains(ingredient)).ToList().Count > 0;
         }
         #endregion
 
-        private static string NameDisplay(string s)
+        #region Static Function field
+        private static string VarDisplay(string s)
         {
             if (string.IsNullOrEmpty(s))
                 return s;
@@ -50,5 +66,6 @@ namespace PizzasV1
             string result = charMaj[0] + charMin[1..];
             return result;
         }
+        #endregion
     }
 }

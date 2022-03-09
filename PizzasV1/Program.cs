@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PizzasV1
@@ -9,30 +10,63 @@ namespace PizzasV1
         static void Main(string[] args)
         {
             #region UTF8
-            //Display "€" char
+            //Encode "€" char
             Console.OutputEncoding = Encoding.UTF8;
             #endregion
 
-            var listePizzas = new List<Pizza>()
+            #region Menu
+            var listPizzas = new List<Pizza>()
             {
                 new Pizza("Royal", 11.3f, false, new List<string>{"Tomato","mushroom","cream","meat","cheese"}),
                 new Pizza("Flamme", 13.5f, false, new List<string>{"cream","porc","oignon" }),
                 new Pizza("MontaGnarde", 14.3f, false, new List<string>{"Potato","redMeat","cream","cheddar","cheese"}),
-                new Pizza("KeBab", 11.5f, false, new List<string>{"Tomato","mushroom","cream","meat","cheese"}),
-                new Pizza("AnchoiE", 10.5f, false, new List<string>{"Tomato","mushroom","cream","meat","cheese"}),
+                new Pizza("KeBab", 11.5f, false, new List<string>{"Tomato","mushroom","cream","porc","cheese"}),
+                new Pizza("AnchoiE", 10.5f, false, new List<string>{"Tomato","mushroom","cream","Fish","cheese"}),
                 new Pizza("FrOmage", 7.5f, true, new List<string>{"Tomato","cheddar","cream","cheese"}),
-                new Pizza("vegie", 12.5f, true, new List<string>{"Tomato","mushroom","banana"})
+                new Pizza("veggie", 12.5f, true, new List<string>{"tomato","mushroom","banana"})
             };
+            #endregion
 
-            foreach(var pizza in listePizzas)
+            //Display vegan only
+            //listPizzas = listPizzas.Where(p => p.vegan).ToList();
+
+            //Sort by price && tomato
+            listPizzas = listPizzas.OrderByDescending(e => e.price).Where(p => p.ReturnIngredient("tomato")).ToList();
+
+            #region Vue
+            //Display all pizzas
+            foreach (var pizzas in listPizzas)
             {
-                pizza.Afficher();
+                pizzas.Display();
             }
-            
+            #endregion
 
-            
-            
+            #region Sort by price
+            //Pizza pizzaPriceMax = null;
+            //Pizza pizzaPriceMin = null;
 
+            //pizzaPriceMin = listPizzas[0];
+            //pizzaPriceMax = listPizzas[0];
+
+            //foreach (var pizza in listPizzas)
+            //{
+            //    if (pizza.price < pizzaPriceMin.price)
+            //    {
+            //        pizzaPriceMin = pizza;
+            //    }
+            //    if (pizza.price > pizzaPriceMax.price)
+            //    {
+            //        pizzaPriceMax = pizza;
+            //    }
+            //}
+
+            //Console.WriteLine();
+            //Console.WriteLine("la pizza la plus chere est : ");
+            //pizzaPriceMax.Display();
+            //Console.WriteLine();
+            //Console.WriteLine("la pizza la moins chere est : ");
+            //pizzaPriceMin.Display();
+            #endregion
         }
     }
 }
