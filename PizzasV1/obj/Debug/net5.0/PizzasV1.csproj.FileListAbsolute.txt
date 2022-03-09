@@ -1,0 +1,16 @@
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\PizzasV1.csproj.AssemblyReference.cache
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\PizzasV1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\PizzasV1.AssemblyInfoInputs.cache
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\PizzasV1.AssemblyInfo.cs
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\PizzasV1.csproj.CoreCompileInputs.cache
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\PizzasV1.exe
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\PizzasV1.deps.json
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\PizzasV1.runtimeconfig.json
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\PizzasV1.runtimeconfig.dev.json
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\PizzasV1.dll
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\ref\PizzasV1.dll
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\PizzasV1.pdb
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\PizzasV1.dll
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\ref\PizzasV1.dll
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\PizzasV1.pdb
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\PizzasV1.genruntimeconfig.cache
