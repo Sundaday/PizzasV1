@@ -8,7 +8,9 @@ namespace PizzasV1
 {
     internal class PizzaMaker : Pizza
     {
+        //Static variable
         static int nbOwnPizza = 0;
+
         #region Constructor field
         public PizzaMaker() : base("Your own Pizza", 10, false, null)
         {
@@ -16,22 +18,24 @@ namespace PizzasV1
             ingredients = new List<string>();
             name = "Own Pizza : " + nbOwnPizza;
 
+            #region Main logic
             while (true)
             {
-                #region Main logic
+                //Main Logic string
                 Console.Write("Please Enter Ingredients to make your Own Pizza : " + nbOwnPizza + " (PRESS ENTER to finish) : ");
                 var ingredient = Console.ReadLine();
+
+                #region Condition field
+                //Encoder checker
                 if (string.IsNullOrWhiteSpace(ingredient))
                 {
                     break;
                 }
-                #endregion
 
-                #region Condition field
                 //Ingredient checker
                 if (ingredients.Contains(ingredient))
                 {
-                    Console.WriteLine("ERROR : This ingredient is allready on your pizza");
+                    Console.WriteLine("ERROR : This ingredient is ready on your pizza");
                 }
                 else
                 {
@@ -40,9 +44,14 @@ namespace PizzasV1
                 }
                 #endregion
 
-                price = 10 + ingredients.Count * 1.5f;
+                #region Price setter
+                //Set price by ingredients
+                price = 7 + ingredients.Count * 1.5f;
+                #endregion
+
                 Console.WriteLine();
             }
+            #endregion
         }
         #endregion
     }
