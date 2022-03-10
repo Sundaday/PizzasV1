@@ -9,8 +9,8 @@ namespace PizzasV1
     internal class Pizza
     {
         #region Variable field
-        string name;
-        public float price { get; private set; }
+        protected string name;
+        public float price { get; protected set; }
         public bool vegan { get; private set; }
         public List<string> ingredients { get; protected set; }
         #endregion
@@ -30,7 +30,7 @@ namespace PizzasV1
         public void Display()
         {
             //if smart syntax
-            string badgeVege = vegan ? " (V)" : "";
+            string badgeVege = vegan ? " (V)" : ""; 
            
             string nameDisplay = VarDisplay(name);
 

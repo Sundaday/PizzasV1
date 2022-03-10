@@ -24,6 +24,7 @@ namespace PizzasV1
                 new Pizza("AnchoiE", 10.5f, false, new List<string>{"Tomato","mushroom","cream","Fish","cheese"}),
                 new Pizza("FrOmage", 7.5f, true, new List<string>{"Tomato","cheddar","cream","cheese"}),
                 new Pizza("veggie", 12.5f, true, new List<string>{"tomato","mushroom","banana"}),
+                new PizzaMaker(),
                 new PizzaMaker()
             };
             #endregion
