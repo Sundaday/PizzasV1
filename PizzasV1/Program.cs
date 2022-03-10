@@ -29,21 +29,8 @@ namespace PizzasV1
             };
             #endregion
 
-            //Display vegan only
-            //listPizzas = listPizzas.Where(p => p.vegan).ToList();
-
-            //Sort by price && return ingredient "tomato"
-            listPizzas = listPizzas.OrderByDescending(e => e.price).ToList();
-
-            #region Display
-            //Display all pizzas
-            foreach (var pizzas in listPizzas)
-            {
-                pizzas.Display();
-            }
-            #endregion
-
-            #region Show Max & Min price
+            #region Query Linq
+            #region Display Max/Min price
             //Pizza pizzaPriceMax = null;
             //Pizza pizzaPriceMin = null;
 
@@ -68,6 +55,21 @@ namespace PizzasV1
             //Console.WriteLine();
             //Console.WriteLine("la pizza la moins chere est : ");
             //pizzaPriceMin.Display();
+            #endregion
+
+            //Display vegan only
+            //listPizzas = listPizzas.Where(p => p.vegan).ToList();
+
+            //Sort by price && return ingredient "tomato"
+            listPizzas = listPizzas.OrderByDescending(e => e.price).ToList();
+            #endregion
+
+            #region Display
+            //Display all pizzas
+            foreach (var pizzas in listPizzas)
+            {
+                pizzas.Display();
+            }
             #endregion
         }
     }

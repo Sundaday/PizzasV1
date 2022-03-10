@@ -65,7 +65,8 @@ namespace PizzasV1
             string charMin = s.ToLower();
             string charMaj = s.ToUpper();
 
-            string result = charMaj[0] + charMin[1..];
+            string result = charMaj[0] + charMin[1..];//[1..] => alternative to SubString(1) !!
+
             return result;
         }
         #endregion
