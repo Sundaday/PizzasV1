@@ -23,17 +23,18 @@ namespace PizzasV1
                 new Pizza("KeBab", 11.5f, false, new List<string>{"Tomato","mushroom","cream","porc","cheese"}),
                 new Pizza("AnchoiE", 10.5f, false, new List<string>{"Tomato","mushroom","cream","Fish","cheese"}),
                 new Pizza("FrOmage", 7.5f, true, new List<string>{"Tomato","cheddar","cream","cheese"}),
-                new Pizza("veggie", 12.5f, true, new List<string>{"tomato","mushroom","banana"})
+                new Pizza("veggie", 12.5f, true, new List<string>{"tomato","mushroom","banana"}),
+                new PizzaMaker()
             };
             #endregion
 
             //Display vegan only
             //listPizzas = listPizzas.Where(p => p.vegan).ToList();
 
-            //Sort by price && tomato
-            listPizzas = listPizzas.OrderByDescending(e => e.price).Where(p => p.ReturnIngredient("tomato")).ToList();
+            //Sort by price && return ingredient "tomato"
+            listPizzas = listPizzas.OrderByDescending(e => e.price).ToList();
 
-            #region Vue
+            #region Display
             //Display all pizzas
             foreach (var pizzas in listPizzas)
             {
@@ -41,7 +42,7 @@ namespace PizzasV1
             }
             #endregion
 
-            #region Sort by price
+            #region Show Max & Min price
             //Pizza pizzaPriceMax = null;
             //Pizza pizzaPriceMin = null;
 

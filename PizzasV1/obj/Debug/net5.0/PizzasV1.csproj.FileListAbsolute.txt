@@ -8,9 +8,9 @@ D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\PizzasV1.deps.json
 D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\PizzasV1.runtimeconfig.json
 D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\PizzasV1.runtimeconfig.dev.json
 D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\PizzasV1.dll
-D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\ref\PizzasV1.dll
 D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\bin\Debug\net5.0\PizzasV1.pdb
 D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\PizzasV1.dll
 D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\ref\PizzasV1.dll
 D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\PizzasV1.pdb
 D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\PizzasV1.genruntimeconfig.cache
+D:\Dev\BACKEND\C#\PizzasV1\PizzasV1\obj\Debug\net5.0\refint\PizzasV1.dll

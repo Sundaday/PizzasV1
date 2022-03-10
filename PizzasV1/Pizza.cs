@@ -12,7 +12,7 @@ namespace PizzasV1
         string name;
         public float price { get; private set; }
         public bool vegan { get; private set; }
-        public List<string> ingredients { get; private set; }
+        public List<string> ingredients { get; protected set; }
         #endregion
 
         #region Constructor field
@@ -34,12 +34,14 @@ namespace PizzasV1
            
             string nameDisplay = VarDisplay(name);
 
+            //Display ingredients
             //var ingredientDisplay = new List<string>();
             //foreach(string ingredient in ingredients)
             //{
             //    ingredientDisplay.Add(VarDisplay(ingredient));
             //}
 
+            //Display ingredients
             var ingredientDisplay = ingredients.Select(i => VarDisplay(i)).ToList();
 
             Console.WriteLine(nameDisplay + badgeVege + " - " + price + "€");
