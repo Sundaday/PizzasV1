@@ -18,57 +18,72 @@ namespace PizzasV1
             #endregion
 
             #region Menu
-            //var pizzas = new List<Pizza>()
-            //{
-            //    new Pizza("Royal", 11.3f, false, new List<string>{"Tomato","mushroom","cream","meat","cheese"}),
-            //    new Pizza("Flamme", 13.5f, false, new List<string>{"cream","porc","oignon" }),
-            //    new Pizza("MontaGnarde", 14.3f, false, new List<string>{"Potato","redMeat","cream","cheddar","cheese"}),
-            //    new Pizza("KeBab", 11.5f, false, new List<string>{"Tomato","mushroom","cream","porc","cheese"}),
-            //    new Pizza("AnchoiE", 10.5f, false, new List<string>{"Tomato","mushroom","cream","Fish","cheese"}),
-            //    new Pizza("FrOmage", 7.5f, true, new List<string>{"Tomato","cheddar","cream","cheese"}),
-            //    new Pizza("veggie", 12.5f, true, new List<string>{"tomato","mushroom","banana"}),
-            //    //new PizzaMaker(),
-            //    //new PizzaMaker()
-            //};
+            static List<Pizza> GetPizzaByConstructor()
+            {
+
+                var pizzas = new List<Pizza>()
+                {
+                    new Pizza("Royal", 11.3f, false, new List<string>{"Tomato","mushroom","cream","meat","cheese"}),
+                    new Pizza("Flamme", 13.5f, false, new List<string>{"cream","porc","oignon" }),
+                    new Pizza("MontaGnarde", 14.3f, false, new List<string>{"Potato","redMeat","cream","cheddar","cheese"}),
+                    new Pizza("KeBab", 11.5f, false, new List<string>{"Tomato","mushroom","cream","porc","cheese"}),
+                    new Pizza("AnchoiE", 10.5f, false, new List<string>{"Tomato","mushroom","cream","Fish","cheese"}),
+                    new Pizza("FrOmage", 7.5f, true, new List<string>{"Tomato","cheddar","cream","cheese"}),
+                    new Pizza("veggie", 12.5f, true, new List<string>{"tomato","mushroom","banana"}),
+                    //new PizzaMaker(),
+                    //new PizzaMaker()
+                };
+                return pizzas;
+            }  
             #endregion
-
-            //var json = JsonConvert.SerializeObject(pizzas);
-            //try
-            //{
-            //    File.WriteAllText("pizzaJson.json", json);
-            //    Console.WriteLine("SUCCESS ... DATA CREATED");
-            //}
-            //catch
-            //{
-            //    Console.WriteLine("ERROR DURING JSON CREATION");
-            //}
-            
             var fileName = "pizzaJson.json";
-            string json = null;
 
-            try
+            static void GenerateJson(List<Pizza> pizzas,string filename)
             {
-                json = File.ReadAllText(fileName);
-                Console.WriteLine("SUCCESS : " + fileName + " Found");
-                Console.WriteLine();
-            }
-            catch 
-            {
-                Console.WriteLine("ERROR ... File : " + fileName + " NOT FOUND");
-                return;
+                var json = JsonConvert.SerializeObject(pizzas);
+                try
+                {
+                    File.WriteAllText("pizzaJson.json", json);
+                    Console.WriteLine("SUCCESS ... DATA CREATED");
+                }
+                catch
+                {
+                    Console.WriteLine("ERROR DURING JSON CREATION");
+                }
             }
 
-            List<Pizza> pizzas = null;
 
-            try
+            List<Pizza>GetPizzaByFileName(string fileName)
             {
-                pizzas = JsonConvert.DeserializeObject<List<Pizza>>(json);
+                string json = null;
+
+                try
+                {
+                    json = File.ReadAllText(fileName);
+                    Console.WriteLine("SUCCESS : " + fileName + " Found");
+                    Console.WriteLine();
+                }
+                catch 
+                {
+                    Console.WriteLine("ERROR ... File : " + fileName + " NOT FOUND");
+                }
+
+                List<Pizza> pizzas = null;
+
+                try
+                {
+                    pizzas = JsonConvert.DeserializeObject<List<Pizza>>(json);
+                }
+                catch
+                {
+                    Console.WriteLine("JSON ERROR : ");
+                    return null;
+                }
+                return pizzas;
             }
-            catch
-            {
-                Console.WriteLine("JSON ERROR : ");
-                return;
-            }
+
+            //var pizzas = GetPizzaByConstructor();
+            var pizzas = GetPizzaByFileName(fileName);
 
             #region Query Linq
             #region Display Max/Min price
@@ -109,8 +124,8 @@ namespace PizzasV1
             //Display all pizzas
             foreach (Pizza pizza in pizzas)
             {
-                //pizza.Display();
-                Console.WriteLine(pizza);
+                pizza.Display();
+                //Console.WriteLine(pizza);
             }
             #endregion
         }
