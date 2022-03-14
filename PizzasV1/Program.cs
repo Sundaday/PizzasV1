@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 namespace PizzasV1
@@ -15,19 +18,57 @@ namespace PizzasV1
             #endregion
 
             #region Menu
-            var listPizzas = new List<Pizza>()
-            {
-                new Pizza("Royal", 11.3f, false, new List<string>{"Tomato","mushroom","cream","meat","cheese"}),
-                new Pizza("Flamme", 13.5f, false, new List<string>{"cream","porc","oignon" }),
-                new Pizza("MontaGnarde", 14.3f, false, new List<string>{"Potato","redMeat","cream","cheddar","cheese"}),
-                new Pizza("KeBab", 11.5f, false, new List<string>{"Tomato","mushroom","cream","porc","cheese"}),
-                new Pizza("AnchoiE", 10.5f, false, new List<string>{"Tomato","mushroom","cream","Fish","cheese"}),
-                new Pizza("FrOmage", 7.5f, true, new List<string>{"Tomato","cheddar","cream","cheese"}),
-                new Pizza("veggie", 12.5f, true, new List<string>{"tomato","mushroom","banana"}),
-                new PizzaMaker(),
-                new PizzaMaker()
-            };
+            //var pizzas = new List<Pizza>()
+            //{
+            //    new Pizza("Royal", 11.3f, false, new List<string>{"Tomato","mushroom","cream","meat","cheese"}),
+            //    new Pizza("Flamme", 13.5f, false, new List<string>{"cream","porc","oignon" }),
+            //    new Pizza("MontaGnarde", 14.3f, false, new List<string>{"Potato","redMeat","cream","cheddar","cheese"}),
+            //    new Pizza("KeBab", 11.5f, false, new List<string>{"Tomato","mushroom","cream","porc","cheese"}),
+            //    new Pizza("AnchoiE", 10.5f, false, new List<string>{"Tomato","mushroom","cream","Fish","cheese"}),
+            //    new Pizza("FrOmage", 7.5f, true, new List<string>{"Tomato","cheddar","cream","cheese"}),
+            //    new Pizza("veggie", 12.5f, true, new List<string>{"tomato","mushroom","banana"}),
+            //    //new PizzaMaker(),
+            //    //new PizzaMaker()
+            //};
             #endregion
+
+            //var json = JsonConvert.SerializeObject(pizzas);
+            //try
+            //{
+            //    File.WriteAllText("pizzaJson.json", json);
+            //    Console.WriteLine("SUCCESS ... DATA CREATED");
+            //}
+            //catch
+            //{
+            //    Console.WriteLine("ERROR DURING JSON CREATION");
+            //}
+            
+            var fileName = "pizzaJson.json";
+            string json = null;
+
+            try
+            {
+                json = File.ReadAllText(fileName);
+                Console.WriteLine("SUCCESS : " + fileName + " Found");
+                Console.WriteLine();
+            }
+            catch 
+            {
+                Console.WriteLine("ERROR ... File : " + fileName + " NOT FOUND");
+                return;
+            }
+
+            List<Pizza> pizzas = null;
+
+            try
+            {
+                pizzas = JsonConvert.DeserializeObject<List<Pizza>>(json);
+            }
+            catch
+            {
+                Console.WriteLine("JSON ERROR : ");
+                return;
+            }
 
             #region Query Linq
             #region Display Max/Min price
@@ -61,14 +102,15 @@ namespace PizzasV1
             //listPizzas = listPizzas.Where(p => p.vegan).ToList();
 
             //Sort by price && return ingredient "tomato"
-            listPizzas = listPizzas.OrderByDescending(e => e.price).ToList();
+            pizzas = pizzas.OrderByDescending(e => e.price).ToList();
             #endregion
-
+            
             #region Display
             //Display all pizzas
-            foreach (var pizzas in listPizzas)
+            foreach (Pizza pizza in pizzas)
             {
-                pizzas.Display();
+                //pizza.Display();
+                Console.WriteLine(pizza);
             }
             #endregion
         }

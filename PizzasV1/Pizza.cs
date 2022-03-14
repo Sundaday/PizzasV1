@@ -9,7 +9,7 @@ namespace PizzasV1
     internal class Pizza
     {
         #region Variable field
-        protected string name;
+        public string name { get; protected set; }
         public float price { get; protected set; }
         public bool vegan { get; private set; }
         public List<string> ingredients { get; protected set; }
