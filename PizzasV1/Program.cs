@@ -36,9 +36,10 @@ namespace PizzasV1
                 return pizzas;
             }  
             #endregion
+
             var fileName = "pizzaJson.json";
 
-            static void GenerateJson(List<Pizza> pizzas,string filename)
+            static void GenerateJson(List<Pizza> pizzas, string filename)
             {
                 var json = JsonConvert.SerializeObject(pizzas);
                 try
@@ -83,7 +84,8 @@ namespace PizzasV1
             }
 
             //var pizzas = GetPizzaByConstructor();
-            var pizzas = GetPizzaByFileName(fileName);
+            //var pizzas = GetPizzaByFileName(fileName);
+            //GenerateJson(pizzas, fileName);
 
             #region Query Linq
             #region Display Max/Min price
