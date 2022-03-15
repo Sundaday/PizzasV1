@@ -9,10 +9,10 @@ namespace PizzasV1
     internal class Pizza
     {
         #region Variable field
-        public string name { get; protected set; }
-        public float price { get; protected set; }
-        public bool vegan { get; private set; }
-        public List<string> ingredients { get; protected set; }
+        public string name { get; init; }
+        public float price { get; init; }
+        public bool vegan { get; init; }
+        public List<string> ingredients { get; init; }
         #endregion
 
         #region Constructor field

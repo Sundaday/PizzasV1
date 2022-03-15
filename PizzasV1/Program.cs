@@ -37,8 +37,6 @@ namespace PizzasV1
             }  
             #endregion
 
-            var fileName = "pizzaJson.json";
-
             #region GenerateJson()
             static void GenerateJson(List<Pizza> pizzas, string filename)
             {
@@ -56,7 +54,7 @@ namespace PizzasV1
             #endregion
 
             #region GetPizzaByFileName()
-            List<Pizza>GetPizzaByFileName(string fileName)
+            static void GetPizzaByFileName(string fileName)
             {
                 string json = null;
 
@@ -69,62 +67,111 @@ namespace PizzasV1
                 catch 
                 {
                     Console.WriteLine("ERROR ... File : " + fileName + " NOT FOUND");
-                }
+                }               
+            }
+            #endregion
 
+            #region GetPizzaFromUrl()
+            static void GetPizzaFromUrl(string url) { 
+            Console.WriteLine("Connexion...");
+                try
+                {
+                    var webClient = new WebClient();
+                    webClient.DownloadFile(url,"url.json");
+                    Console.WriteLine("SUCCESS...DOWNLOAD 100%");
+                }
+                catch (WebException ex)
+                {
+                    if (ex.Response != null)
+                    {
+                        var statusCode = ((HttpWebResponse)ex.Response).StatusCode;
+
+                        if (statusCode == HttpStatusCode.NotFound)
+                        {
+                            Console.WriteLine("NETWORK ERROR : Non trouvé");
+                        }
+                        else
+                        {
+                            Console.WriteLine("NETWORK ERROR : " + statusCode);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("NETWORK ERROR : " + ex.Message);
+                    }
+                }
+            }
+            #endregion
+
+            #region Deserialisation
+            static List<Pizza> Deserialisation(string file)
+            {
                 List<Pizza> pizzas = null;
 
                 try
                 {
-                    pizzas = JsonConvert.DeserializeObject<List<Pizza>>(json);
+                    pizzas = JsonConvert.DeserializeObject<List<Pizza>>(file);
+                    Console.WriteLine("SUCCESS...Deserialisation complete");
+                    Console.WriteLine();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    Console.WriteLine("JSON ERROR : ");
+                    Console.WriteLine("JSON ERROR...Deserialisation Fail " + ex.Message);
+                    Console.WriteLine();
                     return null;
                 }
+
                 return pizzas;
             }
             #endregion
 
-            var pizzas = GetPizzaByConstructor();
+            #region Main Call function
+            string url = "https://codeavecjonathan.com/res/pizzas2.json";
+
+            //GetPizzaFromUrl(url);
+
+            //string file = File.ReadAllText("urlv2.json");
+            string file = File.ReadAllText("pizzaJson.json");
+
+            var pizzas = Deserialisation(file);
+            // pizzas = GetPizzaByConstructor();
             //var pizzas = GetPizzaByFileName(fileName);
             //GenerateJson(pizzas, fileName);
-
-            #region Query Linq
-
-            Pizza pizzaPriceMax = null;
-            Pizza pizzaPriceMin = null;
-
-            pizzaPriceMin = pizzas[0];
-            pizzaPriceMax = pizzas[0];
-
-            foreach (var pizza in pizzas)
-            {
-                if (pizza.price < pizzaPriceMin.price)
-                {
-                    pizzaPriceMin = pizza;
-                }
-                if (pizza.price > pizzaPriceMax.price)
-                {
-                    pizzaPriceMax = pizza;
-                }
-            }
-
-            Console.WriteLine();
-            Console.WriteLine("la pizza la plus chere est : ");
-            pizzaPriceMax.Display();
-            Console.WriteLine();
-            Console.WriteLine("la pizza la moins chere est : ");
-            pizzaPriceMin.Display();
-
-
-            //Display vegan only
-            //listPizzas = listPizzas.Where(p => p.vegan).ToList();
-
-            //Sort by price && return ingredient "tomato"
-            pizzas = pizzas.OrderByDescending(e => e.price).ToList();
             #endregion
-            
+
+            #region Query Linq OrderBy()
+            //Pizza pizzaPriceMax = null;
+            //Pizza pizzaPriceMin = null;
+
+            //pizzaPriceMin = pizzas[0];
+            //pizzaPriceMax = pizzas[0];
+
+            //foreach (var pizza in pizzas)
+            //{
+            //    if (pizza.price < pizzaPriceMin.price)
+            //    {
+            //        pizzaPriceMin = pizza;
+            //    }
+            //    if (pizza.price > pizzaPriceMax.price)
+            //    {
+            //        pizzaPriceMax = pizza;
+            //    }
+            //}
+
+            //Console.WriteLine();
+            //Console.WriteLine("la pizza la plus chere est : ");
+            //pizzaPriceMax.Display();
+            //Console.WriteLine();
+            //Console.WriteLine("la pizza la moins chere est : ");
+            //pizzaPriceMin.Display();
+
+            ////Display vegan only
+            ////listPizzas = listPizzas.Where(p => p.vegan).ToList();
+
+            ////Sort by price && return ingredient "tomato"
+            //pizzas = pizzas.OrderByDescending(e => e.price).ToList();
+            #endregion
+
             #region Display
             //Display all pizzas
             foreach (Pizza pizza in pizzas)

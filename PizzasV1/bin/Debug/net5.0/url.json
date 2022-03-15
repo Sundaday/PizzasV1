@@ -1,0 +1,7 @@
+[
+	{ "name": "4 fromages", "price": 11, "vegan" : true, "ingredients": [ "cantal", "mozzarella", "fromage de chèvre", "gruyère" ]},
+	{ "name": "tartiflette", "price": 14, "vegan" : false, "ingredients": [ "pomme de terre", "oignons", "crème fraiche", "lardons", "mozzarella" ]},
+	{ "name": "margherita", "price": 7, "vegan" : true, "ingredients": [ "sauce tomate", "mozzarella", "basilic" ]},
+	{ "name": "indienne", "price": 10, "vegan" : false, "ingredients": [ "curry", "mozzarella", "poulet", "poivron", "oignon", "coriandre" ]},
+	{ "name": "mexicaine", "price": 13, "vegan" : false, "ingredients": [ "boeuf", "mozzarella", "maïs", "tomates", "oignon", "coriandre" ]}
+]
