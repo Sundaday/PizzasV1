@@ -17,7 +17,7 @@ namespace PizzasV1
             Console.OutputEncoding = Encoding.UTF8;
             #endregion
 
-            #region Menu
+            #region Menu GetPizzaByConstructor()
             static List<Pizza> GetPizzaByConstructor()
             {
 
@@ -39,6 +39,7 @@ namespace PizzasV1
 
             var fileName = "pizzaJson.json";
 
+            #region GenerateJson()
             static void GenerateJson(List<Pizza> pizzas, string filename)
             {
                 var json = JsonConvert.SerializeObject(pizzas);
@@ -52,8 +53,9 @@ namespace PizzasV1
                     Console.WriteLine("ERROR DURING JSON CREATION");
                 }
             }
+            #endregion
 
-
+            #region GetPizzaByFileName()
             List<Pizza>GetPizzaByFileName(string fileName)
             {
                 string json = null;
@@ -82,38 +84,39 @@ namespace PizzasV1
                 }
                 return pizzas;
             }
+            #endregion
 
-            //var pizzas = GetPizzaByConstructor();
+            var pizzas = GetPizzaByConstructor();
             //var pizzas = GetPizzaByFileName(fileName);
             //GenerateJson(pizzas, fileName);
 
             #region Query Linq
-            #region Display Max/Min price
-            //Pizza pizzaPriceMax = null;
-            //Pizza pizzaPriceMin = null;
 
-            //pizzaPriceMin = listPizzas[0];
-            //pizzaPriceMax = listPizzas[0];
+            Pizza pizzaPriceMax = null;
+            Pizza pizzaPriceMin = null;
 
-            //foreach (var pizza in listPizzas)
-            //{
-            //    if (pizza.price < pizzaPriceMin.price)
-            //    {
-            //        pizzaPriceMin = pizza;
-            //    }
-            //    if (pizza.price > pizzaPriceMax.price)
-            //    {
-            //        pizzaPriceMax = pizza;
-            //    }
-            //}
+            pizzaPriceMin = pizzas[0];
+            pizzaPriceMax = pizzas[0];
 
-            //Console.WriteLine();
-            //Console.WriteLine("la pizza la plus chere est : ");
-            //pizzaPriceMax.Display();
-            //Console.WriteLine();
-            //Console.WriteLine("la pizza la moins chere est : ");
-            //pizzaPriceMin.Display();
-            #endregion
+            foreach (var pizza in pizzas)
+            {
+                if (pizza.price < pizzaPriceMin.price)
+                {
+                    pizzaPriceMin = pizza;
+                }
+                if (pizza.price > pizzaPriceMax.price)
+                {
+                    pizzaPriceMax = pizza;
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("la pizza la plus chere est : ");
+            pizzaPriceMax.Display();
+            Console.WriteLine();
+            Console.WriteLine("la pizza la moins chere est : ");
+            pizzaPriceMin.Display();
+
 
             //Display vegan only
             //listPizzas = listPizzas.Where(p => p.vegan).ToList();
