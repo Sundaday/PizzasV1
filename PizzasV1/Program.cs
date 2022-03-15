@@ -128,14 +128,13 @@ namespace PizzasV1
             #region Main Call function
             string url = "https://codeavecjonathan.com/res/pizzas2.json";
 
-            //GetPizzaFromUrl(url);
-
             //string file = File.ReadAllText("urlv2.json");
             string file = File.ReadAllText("pizzaJson.json");
 
-            var pizzas = Deserialisation(file);
+            //GetPizzaFromUrl(url);
             // pizzas = GetPizzaByConstructor();
             //var pizzas = GetPizzaByFileName(fileName);
+            var pizzas = Deserialisation(file);
             //GenerateJson(pizzas, fileName);
             #endregion
 
